@@ -1,0 +1,526 @@
+<! Doctype HTML>
+<html>
+    <head>
+		<title>acfroin</title>
+		<link rel='icon' href='https://docs.google.com/uc?export=download&id=16th7kAE3Te9YYp5VL4Epg0CSBzPuTQaw'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="https://fonts.googleapis.com/css2?family=Caveat&family=Raleway&family=Comfortaa&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<meta name="theme-color" content="#202020">
+		<meta charset="UTF-8">
+		<meta name="description" content="About AC">
+        <meta name="keywords" content="About Me, Portfolio">
+        <meta name="author" content="Aman Chandra">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <link href="styles.css" rel="stylesheet">
+        <style>
+			*{
+			   box-sizing: border-box; 
+			   -webkit-tap-highlight-color: transparent;
+			}
+			::selection{
+				background-color: #000000;
+				color: #ffffff;
+			}
+			body{
+				margin: 0;
+				background-color: rgb(117, 185, 156);
+				transition-duration: 1.5s;
+				transition-property: background-color;
+			}
+			a{
+				color:inherit;
+				text-decoration: none;
+				width: fit-content;
+			}
+
+			/*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+
+			::-webkit-scrollbar {
+				background-color: transparent;
+				width:1vw;
+			}
+			::-webkit-scrollbar-thumb {
+				background-color: rgba(255,255,255,0.2);
+			}
+			::-webkit-scrollbar-thumb:hover {
+				background-color: rgba(255,255,255,0.5);
+			}
+			.sidebar{
+				pointer-events: none;
+				position: fixed;
+				bottom:0;
+				right:0;
+				height: 15vh;
+				width: 100%;
+				background: rgba(200,200,200,0.15);
+				backdrop-filter: saturate(100%) blur(2px);
+				z-index: 10;
+				display: flex;
+				flex-direction:row;
+  				align-items: center;
+  				justify-content: center;
+				box-shadow: 0 0 5px rgba(0,0,0,0.1);
+			}
+			.sidebar .pagelinks{
+				width: 8vh;
+				height: 8vh;
+				margin: 0px 2vw;
+				transition: 0.5s;
+			}
+			.sidebar span{
+				width: 100%;
+				text-align: center;
+				font-size: 8vh;
+				background-color:none;
+				padding: 0px 0px;
+				color:rgba(0,0,0,0.90);
+				transform: scale(0.75);
+				opacity: 0;
+				transition-delay: 500ms;
+				transition-duration: 1000ms;
+			}
+			#active {
+				transform: scale(1.5);
+				transform-origin: 50% 50%;
+			}
+			#active span{
+				color:rgba(0,0,0,1);
+			}
+			.wrapper{
+				position: fixed;
+                top:0;
+				left:0;
+                width:100%;
+				height: calc(100% - 15vh);
+				scroll-behavior: smooth;
+				overflow-y: scroll;
+				scroll-snap-type: y mandatory;
+			}
+			.wrapper:focus{
+				outline: none;
+				border:none;
+			}
+			.profile{
+				width:100%;
+				height: 100%;
+				margin: 0;                   
+				padding:0 20vw 0 10vw;
+				background:transparent;
+				display: flex;
+				flex-direction:row;
+  				align-items: center;
+				z-index: 1;
+				scroll-margin: 0;
+				scroll-snap-align: start;
+				scroll-snap-stop: normal;
+			}
+			
+			.profile h1{
+				font-family: 'Comfortaa', cursive;
+				font-size: 12vh;
+				margin: 0;
+			}
+			.profile h2{
+				font-family: 'Caveat', cursive;
+				font-size: 8vh;
+				margin: 0;
+			}
+			.profile hr{
+				background-color: #000000;
+				border: 1px solid black;
+				border-radius: 25px;
+				height: 5px;
+				width: 10%;
+				text-align: left;
+				margin-left: 0;
+			}
+			.profile p{
+				font-family: 'Raleway', sans-serif;
+				font-size: 4vh;
+				text-align: justify;
+			}
+			.profile p.love{
+				font-family: 'Caveat', cursive;
+				font-size: 4vh;
+			}
+			.profile .desig{
+				font-family: 'Comfortaa', cursive;
+				margin-top:0;
+				font-size: 5vh;
+				color: rgba(0,0,0,0.9);
+			}
+			.profile .desig b{
+				color: rgba(0,0,0,1);
+			}
+			.profile .desig i{
+				font-family: 'Caveat', cursive;
+				font-style: normal;
+				font-size: 6vh;
+				font-weight: bold;
+			}
+			
+			.profile .button{
+				width: fit-content;
+				padding:2vh 2vw;
+				float: left;
+				margin-right:2vw;
+				margin-bottom: 2vh;
+				font-size: 6vh;
+				font-family: 'Comfortaa', cursive;
+				border:0.75vh solid #000000;
+				font-weight: 900;
+			}
+			.button div{
+				display: none;
+			}
+			.button span{
+				font-size: 1em;
+			}
+			#back_icon_effect{
+				position: fixed;
+				z-index: -1;
+				bottom: -50vh;
+				right: 5vw;
+			}
+			#back_icon_effect span{
+				font-size: 150vh;
+				color:rgba(255,255,255,0.1);
+				opacity: 0;
+				animation: fade 1s linear;
+				animation-delay: 0.5s;
+				animation-fill-mode: forwards;
+			}
+			@keyframes fade {
+				100%{
+					opacity:1;
+				}
+			}
+			.back_icon{
+				display: none;
+			}
+			#back_icon{
+				display: block;
+			}
+            .fade{
+                transform: translateY(5px);
+                opacity: 0;
+				transition-duration: 1000ms;
+				transition-delay: 500ms;
+            }
+			kbd{
+				font-family: monospace;
+			}
+			/*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+		
+
+		@media only screen  and (max-width:1024px){
+
+			::-webkit-scrollbar {
+				display: none;
+			}
+			::-webkit-scrollbar-thumb {
+				display: none;
+			}
+
+			.sidebar{
+				top:0;
+				right:0;
+				height:100%;
+				width: 20vw;
+				flex-direction: column;
+			}
+			.sidebar .pagelinks{
+				width: 5vh;
+				height: 5vh;
+				margin:2vh 0vh;
+			}
+			.sidebar span{
+				font-size: 5vh;
+			}
+			#active {
+				transform: scale(1.6);
+				transform-origin: 50% 50%;
+			}
+			#active span{
+				color:rgba(0,0,0,1);
+			}
+			.wrapper{
+                width:80vw;
+				height: 100%;
+			}
+			.profile{            
+				padding:0vw 5vw;
+			}
+			.profile h1{
+				font-size: 5.5vh;
+			}
+			.profile h2{
+				font-size: 5vh;
+			}
+			.profile p{
+				text-align: left;
+				font-size: 2.5vh;
+			}
+			.profile p.love{
+				font-size: 2.5vh;
+			}
+			.profile .desig{
+				font-size: 2.5vh;
+			}
+			.profile .desig i{
+				font-size: 1em;
+			}
+			.profile .button{
+				padding:2.5vw 5vw; 
+				font-size: 3.5vh;
+				border:0.5vh solid #000000;
+			}
+			a:hover{
+				text-decoration-line: unset;
+			}
+			
+			#back_icon_effect{
+				top:0vw;
+				right:-50vw;
+			}
+			#back_icon_effect span{
+				font-size: 150vw;
+			}
+		}
+		</style>
+    </head>
+    <body onload='fadeSide();fadeMe(0);wrap.focus()'>
+		<div id='back_icon_effect'>
+			<span class="back_icon material-icons" id="back_icon">&#xe86f;</span>
+				<span class="back_icon fa fa-github" ></span>
+				<span class="back_icon fa fa-instagram" ></span>
+				<span class="back_icon fa fa-snapchat-ghost" style="color:rgba(255,255,255,0.15)"></span>
+				<span class="back_icon fa fa-reddit-alien" ></span>
+				<span class="back_icon fa fa-twitter" ></span>
+				<span class="back_icon fa fa-pinterest" ></span>
+				<span class="back_icon fa fa-linkedin" ></span>
+		</div>
+		<div class='wrapper' tabindex="1">
+		<div class='profile' id='me'>
+			<div>
+			<h2 class='fade'>myself<hr></h2>
+			<h1 class='fade'>aman chandra</h1>
+			<br>
+			<p class='desig fade'>
+				<b>#developer</b><br>
+				<i>from india.</i>
+			</p>
+			<p class='fade'>
+				I'm a tech engineer.<br>Getting the hang of java & javascript, exploring libraries & frameworks.
+			</p>
+			<p class='fade'>
+				Loves reading blog posts, binging on YouTube and vibing with the twilight & YT Music. Plays Battlegrounds Mobile. 
+			</p>
+			</div>
+			
+		</div>
+
+		<div class='profile' id='github'>
+			<div>
+			<h1 class='fade'>my ideas & projects</h1>
+			<p class='fade'>
+				Check out my repositories, packages and projects.
+			</p>
+			<p class='fade'>
+				Discuss the ideas you're wrapping your head around or would you get my issues fixed? Don't forget to check out right.
+			</p>
+			<div class='fade'>
+				<div class='button'><a target="_blank" href="https://github.com/amanchandra-in/">explore</a></div>
+				</div>
+			</div>
+		</div>
+
+		<div class='profile' id='instagram'>
+			<div>
+			<h1 class='fade'>flick-pic moments</h1>
+			<p class='fade'>
+				Dive in for fun. For me & my friends and the community. Would you?
+			</p>
+			<p class='fade'>
+			  I would love to be your loved one.
+			</p>
+			<div class='fade'><div class='button'><a target="_blank" href="https://instagram.com/acfroin/">follow</a></div></div>
+			</div>
+		</div>
+
+		<div class='profile' id='snapchat'>
+			<div>
+			<h1 class='fade'>snap-shot moments </h1>
+			<p class='fade'>
+				Just for fun, woops! let's go snapchatting.
+			</p>
+			<div class='fade'><div class='button'><a target="_blank" href="https://www.snapchat.com/add/acfroin/">friend</a></div></div>
+			</div>
+		</div>
+
+		<div class='profile' id='reddit'>
+			<div>
+			<h1 class='fade'>reddited posts </h1>
+			<p class='fade'>
+				A registered member, contributing to the site with content via images, text, videos, and links. I do vote 'em up or down.
+			</p>
+			<div class='fade'><div class='button'><a target="_blank" href="https://www.reddit.com/user/Head_n_Shoulder">reddit</a></div></div>
+			</div>
+		</div>
+
+		<div class='profile' id='twitter'>
+			<div>
+			<h1 class='fade'>it's what's happening</h1>
+			<p class='fade'>
+				It's what's trending. Wait! I got not yet on trends.
+			</p>
+			<p class='fade'>
+				If you're interested in what interests me, reckon joining my space. I would love that. Do consider
+			</p>
+			<div class='fade'><div class='button'><a target="_blank" href="https://twitter.com/acfroin/">follow</a></div></div>
+			</div>
+		</div>
+
+		<div class='profile' id='pinterest'>
+			<div>
+			<h1 class='fade'>lifestyle interests</h1>
+			<p class='fade'>
+				For the love of pictures and lifestyle ideas. I'm not a creater yet.
+			</p>
+			<p class='fade'>
+				"just pin it", is what I'm left to do.
+			</p>
+			<div class='fade'><div class='button'><a target="_blank" href="https://pinterest.com/acfroin/">pins</a></div></div>
+			</div>
+		</div>
+
+		<div class='profile' id='linkedin'>
+			<div>
+			<h1 class='fade'>building connection</h1>
+			<p class='fade'>
+				Connect to my network of sundry professionals and industry experts.
+			</p>
+			<p class='fade'>
+				View my skills, certifications, projects and resume, for the professional me.
+			</p>
+			<div class='fade'><div class='button'><a>disconnected</a></div></div>
+			</div>
+		</div>
+
+		</div>
+        <div class='sidebar'>
+			<div class='pagelinks'  id='active'>
+				<a href="#me"><span class="fa fa-circle-o"></span></a>
+			</div>
+			<div class='pagelinks'>
+				<a href="#github"><span class="fa fa-github"></span></a>
+			</div>
+			<div class='pagelinks' >
+				<a href="#instagram"><span class="fa fa-instagram"></span></a>
+			</div>
+			<div class='pagelinks' >
+				<a href="#snapchat"><span class="fa fa-snapchat-ghost"></span></a>
+			</div>
+			<div class='pagelinks' >
+				<a href="#reddit"><span class="fa fa-reddit-alien"></span></a>
+			</div>
+			<div class='pagelinks'>
+				<a href="#twitter"><span class="fa fa-twitter"></span></a>
+			</div>
+			<div class='pagelinks'>
+				<a href="#pinterest"><span class="fa fa-pinterest"></span></a>
+			</div>
+			<div class='pagelinks'>
+				<a href="#linkedin"><span class="fa fa-linkedin"></span></a>
+			</div>
+        </div>
+		<script>
+			var wrap=document.getElementsByClassName('wrapper')[0];
+			wrap.addEventListener("scroll", myFunction);
+			var body=document.getElementsByTagName('body')[0].style; 
+			function sleep(ms) {
+				return new Promise(resolve => setTimeout(resolve, ms));
+			}
+
+			function fadeSide(){
+				let set = document.getElementsByClassName('sidebar')[0];
+				let fadElems = set.getElementsByClassName('fa');		
+				for (i = 0; i < fadElems.length; i++) {
+					fadElems[i].style.transform="scale(1)";
+					fadElems[i].style.opacity=1;
+				}
+			}
+
+			function activate_icon(id){
+				var links=document.getElementsByClassName('pagelinks');
+				var icons=document.getElementsByClassName('back_icon');
+				for (i = 0; i < links.length; i++) {
+					if(i==id){
+						links[i].id = "active";
+						icons[i].id = "back_icon";
+					}else{
+						links[i].id = "";
+						icons[i].id = "";
+					}
+                  }
+			}
+
+			function resetFade(){
+				var fadElems = document.getElementsByClassName('fade');
+				for (i = 0; i < fadElems.length; i++) {
+					fadElems[i].style.opacity=0;
+					fadElems[i].style.transform="translateY(5px)";
+				}
+			}
+			async function fadeMe(id){
+				resetFade();
+				var set = document.getElementsByClassName('profile');
+				var fadElems = set[id].getElementsByClassName('fade');		
+				for (i = 0; i < fadElems.length; i++) {
+					fadElems[i].style.transform="translateY(0)";
+					fadElems[i].style.opacity=1;
+					await sleep(0);
+				}
+			}
+		
+			function myFunction() {
+				var scroll =((wrap.scrollTop) / (wrap.scrollHeight));
+				let x = 1/16;
+				if(scroll<1.5*x){
+					body.backgroundColor='rgb(107, 175, 146)';
+					activate_icon(0);
+					fadeMe(0);
+				}else if(scroll<3.5*x){
+					body.backgroundColor='rgb(140, 114, 178)';
+					activate_icon(1);
+					fadeMe(1);
+				}else if(scroll<5.5*x){
+					body.backgroundColor='rgb(225, 92, 127)';
+					activate_icon(2);
+					fadeMe(2);
+				}else if(scroll<7.5*x){
+					body.backgroundColor='rgba(225, 222, 0, 0.7)';
+					activate_icon(3);
+					fadeMe(3);
+				}else if(scroll<9.5*x){
+					body.backgroundColor='rgba(255, 67, 1, 0.6)';
+					activate_icon(4);
+					fadeMe(4);
+				}else if(scroll<11.5*x){
+					body.backgroundColor='rgb(39, 171, 252)';
+					activate_icon(5);
+					fadeMe(5);
+				}else if(scroll<13.5*x){
+					body.backgroundColor='rgb(218, 102, 108)';
+					activate_icon(6);
+					fadeMe(6);
+				}else if(scroll<15.5*x){
+					body.backgroundColor='rgb(34, 138, 188)';
+					activate_icon(7);
+					fadeMe(7);
+				}
+			}
+		</script>
+    </body>
+</html>
