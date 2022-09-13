@@ -155,7 +155,7 @@
      font-weight: 900;
  }
  .deactivated{
-     border:none;
+     border:none !important;
  }
  .button div{
      display: none;
@@ -262,6 +262,9 @@
      padding:2.5vw 5vw; 
      font-size: 3.5vh;
      border:0.5vh solid #000000;
+ }
+ .deactivated{
+     border:none !important;
  }
  a:hover{
      text-decoration-line: unset;
