@@ -13,282 +13,6 @@
         <meta name="author" content="Aman Chandra">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <link href="styles.css" rel="stylesheet">
-        <style>
-			*{
-			   box-sizing: border-box; 
-			   -webkit-tap-highlight-color: transparent;
-			}
-			::selection{
-				background-color: #000000;
-				color: #ffffff;
-			}
-			body{
-				margin: 0;
-				background-color: rgb(117, 185, 156);
-				transition-duration: 1.5s;
-				transition-property: background-color;
-			}
-			a{
-				color:inherit;
-				text-decoration: none;
-				width: fit-content;
-			}
-
-			/*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-
-			::-webkit-scrollbar {
-				background-color: transparent;
-				width:1vw;
-			}
-			::-webkit-scrollbar-thumb {
-				background-color: rgba(255,255,255,0.2);
-			}
-			::-webkit-scrollbar-thumb:hover {
-				background-color: rgba(255,255,255,0.5);
-			}
-			.sidebar{
-				pointer-events: none;
-				position: fixed;
-				bottom:0;
-				right:0;
-				height: 15vh;
-				width: 100%;
-				background: rgba(200,200,200,0.15);
-				backdrop-filter: saturate(100%) blur(2px);
-				z-index: 10;
-				display: flex;
-				flex-direction:row;
-  				align-items: center;
-  				justify-content: center;
-				box-shadow: 0 0 5px rgba(0,0,0,0.1);
-			}
-			.sidebar .pagelinks{
-				width: 8vh;
-				height: 8vh;
-				margin: 0px 2vw;
-				transition: 0.5s;
-			}
-			.sidebar span{
-				width: 100%;
-				text-align: center;
-				font-size: 8vh;
-				background-color:none;
-				padding: 0px 0px;
-				color:rgba(0,0,0,0.90);
-				transform: scale(0.75);
-				opacity: 0;
-				transition-delay: 500ms;
-				transition-duration: 1000ms;
-			}
-			#active {
-				transform: scale(1.5);
-				transform-origin: 50% 50%;
-			}
-			#active span{
-				color:rgba(0,0,0,1);
-			}
-			.wrapper{
-				position: fixed;
-                top:0;
-				left:0;
-                width:100%;
-				height: calc(100% - 15vh);
-				scroll-behavior: smooth;
-				overflow-y: scroll;
-				scroll-snap-type: y mandatory;
-			}
-			.wrapper:focus{
-				outline: none;
-				border:none;
-			}
-			.profile{
-				width:100%;
-				height: 100%;
-				margin: 0;                   
-				padding:0 20vw 0 10vw;
-				background:transparent;
-				display: flex;
-				flex-direction:row;
-  				align-items: center;
-				z-index: 1;
-				scroll-margin: 0;
-				scroll-snap-align: start;
-				scroll-snap-stop: normal;
-			}
-			
-			.profile h1{
-				font-family: 'Comfortaa', cursive;
-				font-size: 12vh;
-				margin: 0;
-			}
-			.profile h2{
-				font-family: 'Caveat', cursive;
-				font-size: 8vh;
-				margin: 0;
-			}
-			.profile hr{
-				background-color: #000000;
-				border: 1px solid black;
-				border-radius: 25px;
-				height: 5px;
-				width: 10%;
-				text-align: left;
-				margin-left: 0;
-			}
-			.profile p{
-				font-family: 'Raleway', sans-serif;
-				font-size: 4vh;
-				text-align: justify;
-			}
-			.profile p.love{
-				font-family: 'Caveat', cursive;
-				font-size: 4vh;
-			}
-			.profile .desig{
-				font-family: 'Comfortaa', cursive;
-				margin-top:0;
-				font-size: 5vh;
-				color: rgba(0,0,0,0.9);
-			}
-			.profile .desig b{
-				color: rgba(0,0,0,1);
-			}
-			.profile .desig i{
-				font-family: 'Caveat', cursive;
-				font-style: normal;
-				font-size: 6vh;
-				font-weight: bold;
-			}
-			
-			.profile .button{
-				width: fit-content;
-				padding:2vh 2vw;
-				float: left;
-				margin-right:2vw;
-				margin-bottom: 2vh;
-				font-size: 6vh;
-				font-family: 'Comfortaa', cursive;
-				border:0.75vh solid #000000;
-				font-weight: 900;
-			}
-			.button div{
-				display: none;
-			}
-			.button span{
-				font-size: 1em;
-			}
-			#back_icon_effect{
-				position: fixed;
-				z-index: -1;
-				bottom: -50vh;
-				right: 5vw;
-			}
-			#back_icon_effect span{
-				font-size: 150vh;
-				color:rgba(255,255,255,0.1);
-				opacity: 0;
-				animation: fade 1s linear;
-				animation-delay: 0.5s;
-				animation-fill-mode: forwards;
-			}
-			@keyframes fade {
-				100%{
-					opacity:1;
-				}
-			}
-			.back_icon{
-				display: none;
-			}
-			#back_icon{
-				display: block;
-			}
-            .fade{
-                transform: translateY(5px);
-                opacity: 0;
-				transition-duration: 1000ms;
-				transition-delay: 500ms;
-            }
-			kbd{
-				font-family: monospace;
-			}
-			/*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-		
-
-		@media only screen  and (max-width:1024px){
-
-			::-webkit-scrollbar {
-				display: none;
-			}
-			::-webkit-scrollbar-thumb {
-				display: none;
-			}
-
-			.sidebar{
-				top:0;
-				right:0;
-				height:100%;
-				width: 20vw;
-				flex-direction: column;
-			}
-			.sidebar .pagelinks{
-				width: 5vh;
-				height: 5vh;
-				margin:2vh 0vh;
-			}
-			.sidebar span{
-				font-size: 5vh;
-			}
-			#active {
-				transform: scale(1.6);
-				transform-origin: 50% 50%;
-			}
-			#active span{
-				color:rgba(0,0,0,1);
-			}
-			.wrapper{
-                width:80vw;
-				height: 100%;
-			}
-			.profile{            
-				padding:0vw 5vw;
-			}
-			.profile h1{
-				font-size: 5.5vh;
-			}
-			.profile h2{
-				font-size: 5vh;
-			}
-			.profile p{
-				text-align: left;
-				font-size: 2.5vh;
-			}
-			.profile p.love{
-				font-size: 2.5vh;
-			}
-			.profile .desig{
-				font-size: 2.5vh;
-			}
-			.profile .desig i{
-				font-size: 1em;
-			}
-			.profile .button{
-				padding:2.5vw 5vw; 
-				font-size: 3.5vh;
-				border:0.5vh solid #000000;
-			}
-			a:hover{
-				text-decoration-line: unset;
-			}
-			
-			#back_icon_effect{
-				top:0vw;
-				right:-50vw;
-			}
-			#back_icon_effect span{
-				font-size: 150vw;
-			}
-		}
-		</style>
     </head>
     <body onload='fadeSide();fadeMe(0);wrap.focus()'>
 		<div id='back_icon_effect'>
@@ -311,10 +35,10 @@
 				<i>from india.</i>
 			</p>
 			<p class='fade'>
-				I'm a tech engineer.<br>Getting the hang of it, exploring bits and bytes.
+				Howdy! I'm a tech engineer. I also talk about <kbd>#open-source</kbd> and <kbd>#web3</kbd><br>Getting the hang of it, exploring bits and bytes.
 			</p>
 			<p class='fade'>
-				Loves reading blog posts, binging on YT and vibing with the twilight silence. 
+				Loves reading tech & psychology blog posts, binging on YT and vibing the twilight. I owe time to good music.
 			</p>
 			</div>
 			
@@ -322,9 +46,9 @@
 
 		<div class='profile' id='github'>
 			<div>
-			<h1 class='fade'>my ideas & projects</h1>
+			<h1 class='fade'>my merges & projects</h1>
 			<p class='fade'>
-				Check out my repositories, packages and projects.
+				Check out my repositories, gists and projects.
 			</p>
 			<p class='fade'>
 				Discuss the ideas you're wrapping your head around or would you get my issues fixed? Don't forget to check out right.
@@ -339,12 +63,12 @@
 			<div>
 			<h1 class='fade'>flick-pic moments</h1>
 			<p class='fade'>
-				Dive in for fun. For me & my friends and the community. Would you?
+				Dive in for fun. For me & my friends, if you. Would you?
 			</p>
 			<p class='fade'>
 			  I would love to be one of your loved ones.
 			</p>
-			<div class='fade'><div class='button'><a target="_blank" href="https://www.instagram.com/amanchandra.in">follow</a></div></div>
+			<div class='fade'><div class='button'><a target="_blank" href="https://instagram.com/amanchandra.in/">follow</a></div></div>
 			</div>
 		</div>
 
@@ -352,7 +76,7 @@
 			<div>
 			<h1 class='fade'>snap-shot moments </h1>
 			<p class='fade'>
-				Just for fun, woops! let's go snapchatting.
+				Just for fun, woos! let's go snapchatting.
 			</p>
 			<div class='fade'><div class='button'><a target="_blank" href="https://www.snapchat.com/add/amanchandra.in/">befriend</a></div></div>
 			</div>
@@ -360,9 +84,9 @@
 
 		<div class='profile' id='reddit'>
 			<div>
-			<h1 class='fade'>reddited posts </h1>
+			<h1 class='fade'>reddit posts </h1>
 			<p class='fade'>
-				A least-interested member! Consuming more than contributing, but I do vote 'em up or down.
+				I even don't know when i registered, its been a long time contributed...<br>I do vote 'em up or down.
 			</p>
 			<div class='fade'><div class='button'><a target="_blank" href="https://www.reddit.com/user/Head_n_Shoulder">reddit</a></div></div>
 			</div>
@@ -372,10 +96,10 @@
 			<div>
 			<h1 class='fade'>it's what's happening</h1>
 			<p class='fade'>
-				It's what's trending. Wait! I got not yet on trends.
+				It's what's trending.
 			</p>
 			<p class='fade'>
-				If you're interested in what interests me, reckon joining my space. I would love that. Do consider
+				If you're interested in what interests me, reckon joining my space. Do consider
 			</p>
 			<div class='fade'><div class='button'><a target="_blank" href="https://twitter.com/amanchandra_in/">follow</a></div></div>
 			</div>
@@ -385,10 +109,10 @@
 			<div>
 			<h1 class='fade'>lifestyle interests</h1>
 			<p class='fade'>
-				For the love of pictures and lifestyle ideas. For stories to tell and listen to.
+				For the love of pics, art styles, cooking and lifestyle ideas. For stories to tell and listen to.
 			</p>
 			<p class='fade'>
-				"pin it!", i often do .
+				Uh! I've pinned a lot of 'em, I often do.
 			</p>
 			<div class='fade'><div class='button'><a target="_blank" href="https://pinterest.com/amanchandra_in/">my pins</a></div></div>
 			</div>
@@ -398,7 +122,7 @@
 			<div>
 			<h1 class='fade'>building connection</h1>
 			<p class='fade'>
-				Connect to my network of sundry professionals and industry experts.
+				Connect to my network of sundry professionals, industry experts & my fellow mates.
 			</p>
 			<p class='fade'>
 				View my skills, certifications, projects and resume, for the professional me.
@@ -434,92 +158,6 @@
 				<a href="#linkedin"><span class="fa fa-linkedin"></span></a>
 			</div>
         </div>
-		<script>
-			var wrap=document.getElementsByClassName('wrapper')[0];
-			wrap.addEventListener("scroll", myFunction);
-			var body=document.getElementsByTagName('body')[0].style; 
-			function sleep(ms) {
-				return new Promise(resolve => setTimeout(resolve, ms));
-			}
-
-			function fadeSide(){
-				let set = document.getElementsByClassName('sidebar')[0];
-				let fadElems = set.getElementsByClassName('fa');		
-				for (i = 0; i < fadElems.length; i++) {
-					fadElems[i].style.transform="scale(1)";
-					fadElems[i].style.opacity=1;
-				}
-			}
-
-			function activate_icon(id){
-				var links=document.getElementsByClassName('pagelinks');
-				var icons=document.getElementsByClassName('back_icon');
-				for (i = 0; i < links.length; i++) {
-					if(i==id){
-						links[i].id = "active";
-						icons[i].id = "back_icon";
-					}else{
-						links[i].id = "";
-						icons[i].id = "";
-					}
-                  }
-			}
-
-			function resetFade(){
-				var fadElems = document.getElementsByClassName('fade');
-				for (i = 0; i < fadElems.length; i++) {
-					fadElems[i].style.opacity=0;
-					fadElems[i].style.transform="translateY(5px)";
-				}
-			}
-			async function fadeMe(id){
-				resetFade();
-				var set = document.getElementsByClassName('profile');
-				var fadElems = set[id].getElementsByClassName('fade');		
-				for (i = 0; i < fadElems.length; i++) {
-					fadElems[i].style.transform="translateY(0)";
-					fadElems[i].style.opacity=1;
-					await sleep(0);
-				}
-			}
-		
-			function myFunction() {
-				var scroll =((wrap.scrollTop) / (wrap.scrollHeight));
-				let x = 1/16;
-				if(scroll<1.5*x){
-					body.backgroundColor='rgb(107, 175, 146)';
-					activate_icon(0);
-					fadeMe(0);
-				}else if(scroll<3.5*x){
-					body.backgroundColor='rgb(140, 114, 178)';
-					activate_icon(1);
-					fadeMe(1);
-				}else if(scroll<5.5*x){
-					body.backgroundColor='rgb(225, 92, 127)';
-					activate_icon(2);
-					fadeMe(2);
-				}else if(scroll<7.5*x){
-					body.backgroundColor='rgba(225, 222, 0, 0.7)';
-					activate_icon(3);
-					fadeMe(3);
-				}else if(scroll<9.5*x){
-					body.backgroundColor='rgba(255, 67, 1, 0.6)';
-					activate_icon(4);
-					fadeMe(4);
-				}else if(scroll<11.5*x){
-					body.backgroundColor='rgb(39, 171, 252)';
-					activate_icon(5);
-					fadeMe(5);
-				}else if(scroll<13.5*x){
-					body.backgroundColor='rgb(218, 102, 108)';
-					activate_icon(6);
-					fadeMe(6);
-				}else if(scroll<15.5*x){
-					body.backgroundColor='rgb(34, 138, 188)';
-					activate_icon(7);
-					fadeMe(7);
-				}
-			}
-		</script>
+		<script src="script.js" defer></script>
     </body>
 </html>
