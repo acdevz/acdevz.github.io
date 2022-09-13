@@ -83,3 +83,11 @@ function myFunction() {
         fadeMe(7);
     }
 }
+var link = document.querySelectorAll('.pagelinks a');
+for (let i = 0; i < link.length; i++) {
+    link[i].addEventListener('click', function(){
+        setTimeout(() => {
+            window.history.back();
+        }, 2000);
+    });
+  }

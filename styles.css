@@ -31,20 +31,19 @@
      background-color: rgba(255,255,255,0.5);
  }
  .sidebar{
-     pointer-events: none;
-     position: fixed;
-     bottom:0;
-     right:0;
-     height: 15vh;
-     width: 100%;
-     background: rgba(200,200,200,0.15);
-     backdrop-filter: saturate(100%) blur(2px);
-     z-index: 10;
-     display: flex;
-     flex-direction:row;
-       align-items: center;
-       justify-content: center;
-     box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    position: fixed;
+    bottom:0;
+    right:0;
+    height: 15vh;
+    width: 100%;
+    background: rgba(200,200,200,0.15);
+    backdrop-filter: saturate(100%) blur(2px);
+    z-index: 10;
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
  }
  .sidebar .pagelinks{
      width: 8vh;
@@ -193,8 +192,8 @@
      transition-delay: 500ms;
  }
  kbd{
-     font-family: monospace;
-     background-color: rgba(255, 255, 255, 0.541);
+    font-family: monospace;
+    text-decoration-line:underline;
  }
  /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
