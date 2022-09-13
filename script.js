@@ -86,8 +86,7 @@ function myFunction() {
 var link = document.querySelectorAll('.pagelinks a');
 for (let i = 0; i < link.length; i++) {
     link[i].addEventListener('click', function(){
-        setTimeout(() => {
-            window.history.back();
-        }, 2000);
+        view = document.querySelector(this.id);
+        view.scrollIntoView();
     });
   }
