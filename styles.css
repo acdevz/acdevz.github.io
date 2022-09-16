@@ -49,7 +49,7 @@
      width: 8vh;
      height: 8vh;
      margin: 0px 2vw;
-     transition: 0.5s;
+     transition: 0.7s;
  }
  .sidebar span{
      width: 100%;
@@ -58,11 +58,19 @@
      background-color:none;
      padding: 0px 0px;
      color:rgba(0,0,0,0.90);
-     transform: scale(0.75);
      opacity: 0;
-     transition-delay: 500ms;
-     transition-duration: 1000ms;
+     transform: scale(0.75);
+     animation: fade-to-scale 0.75s forwards linear;
+     animation-delay: 500ms;
  }
+ 
+ @keyframes fade-to-scale {
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
+ }
+
  #active {
      transform: scale(1.5);
      transform-origin: 50% 50%;
@@ -92,55 +100,50 @@
      background:transparent;
      display: flex;
      flex-direction:row;
-       align-items: center;
+     align-items: center;
      z-index: 1;
      scroll-margin: 0;
      scroll-snap-align: start;
      scroll-snap-stop: normal;
  }
  
- .profile h1{
+ .profile .h1{
      font-family: 'Comfortaa', cursive;
      font-size: 12vh;
+     font-weight: bold;
      margin: 0;
  }
- .profile h2{
+ .profile .h2{
      font-family: 'Caveat', cursive;
      font-size: 8vh;
      margin: 0;
+     font-weight: bold;
  }
  .profile hr{
      background-color: #000000;
-     border: 1px solid black;
-     border-radius: 25px;
-     height: 5px;
+     border: none;
+     border-radius: .25vh;
+     height: .5vh;
      width: 10%;
      text-align: left;
      margin-left: 0;
  }
- .profile p{
-     font-family: 'Raleway', sans-serif;
+ .profile .p{
+     font-family: 'Quicksand', sans-serif;
      font-size: 4.5vh;
      text-align: justify;
- }
- .profile p.love{
-     font-family: 'Caveat', cursive;
-     font-size: 4vh;
+     margin: 2.5vh 0;
  }
  .profile .desig{
-     font-family: 'Comfortaa', cursive;
      margin-top:0;
-     font-size: 5vh;
-     color: rgba(0,0,0,0.9);
  }
- .profile .desig b{
-     color: rgba(0,0,0,1);
- }
+ 
  .profile .desig i{
      font-family: 'Caveat', cursive;
      font-style: normal;
-     font-size: 6vh;
-     font-weight: bold;
+     font-size: 6.5vh;
+     color: rgba(0,0,0,0.9);
+     
  }
  
  .profile .button{
@@ -153,9 +156,6 @@
      font-family: 'Comfortaa', cursive;
      border:0.75vh solid #000000;
      font-weight: 900;
- }
- .deactivated{
-     border:none !important;
  }
  .button div{
      display: none;
@@ -178,7 +178,7 @@
      animation-fill-mode: forwards;
  }
  @keyframes fade {
-     100%{
+     to {
          opacity:1;
      }
  }
@@ -189,11 +189,40 @@
      display: block;
  }
  .fade{
-     transform: translateY(5px);
+     transform: translateY(10px);
      opacity: 0;
-     transition-duration: 1000ms;
-     transition-delay: 500ms;
+     animation-duration: 1000ms;
+     animation-fill-mode: forwards;
+     animation-delay: 500ms;
  }
+ @keyframes fade-in{
+    to{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+ }
+ @keyframes fade-out{
+    to{
+        transform: translateY(10px);
+        opacity: 0;
+    }
+ }
+ .profile .fade:nth-of-type(1){
+    animation-delay: 500ms;
+ }
+ .profile .fade:nth-of-type(2){
+    animation-delay: 600ms;
+ }
+ .profile .fade:nth-of-type(3){
+    animation-delay: 700ms;
+ }
+ .profile .fade:nth-of-type(4){
+    animation-delay: 800ms;
+ }
+ .profile .fade:nth-of-type(5){
+    animation-delay: 900ms;
+ }
+
  kbd{
     font-family: monospace;
     text-decoration-line:underline;
@@ -239,32 +268,27 @@
  .profile{            
      padding:0vw 5vw;
  }
- .profile h1{
+ .profile .h1{
      font-size: 5.5vh;
+     word-break:normal;
  }
- .profile h2{
+ .profile .h1 span{
+    display: block;
+}
+ .profile .h2{
      font-size: 5vh;
  }
- .profile p{
+ .profile .p{
      text-align: left;
      font-size: 2.5vh;
  }
- .profile p.love{
-     font-size: 2.5vh;
- }
- .profile .desig{
-     font-size: 2.5vh;
- }
  .profile .desig i{
-     font-size: 1em;
+     font-size: 4vh;
  }
  .profile .button{
      padding:2.5vw 5vw; 
      font-size: 3.5vh;
      border:0.5vh solid #000000;
- }
- .deactivated{
-     border:none !important;
  }
  a:hover{
      text-decoration-line: unset;
@@ -276,5 +300,8 @@
  }
  #back_icon_effect span{
      font-size: 150vw;
+ }
+ .embeds{
+    display: none;
  }
 }

@@ -1,51 +1,34 @@
 var wrap=document.getElementsByClassName('wrapper')[0];
 wrap.addEventListener("scroll", myFunction);
-var body=document.getElementsByTagName('body')[0].style; 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-function fadeSide(){
-    let set = document.getElementsByClassName('sidebar')[0];
-    let fadElems = set.getElementsByClassName('fa');		
-    for (i = 0; i < fadElems.length; i++) {
-        fadElems[i].style.transform="scale(1)";
-        fadElems[i].style.opacity=1;
-    }
-}
 
 function activate_icon(id){
     var links=document.getElementsByClassName('pagelinks');
     var icons=document.getElementsByClassName('back_icon');
     for (i = 0; i < links.length; i++) {
-        if(i==id){
-            links[i].id = "active";
-            icons[i].id = "back_icon";
-        }else{
             links[i].id = "";
             icons[i].id = "";
-        }
-        }
+    }
+    links[id].id = "active";
+    icons[id].id = "back_icon";
 }
 
 function resetFade(){
-    var fadElems = document.getElementsByClassName('fade');
-    for (i = 0; i < fadElems.length; i++) {
-        fadElems[i].style.opacity=0;
-        fadElems[i].style.transform="translateY(5px)";
-    }
-}
-async function fadeMe(id){
-    resetFade();
-    var set = document.getElementsByClassName('profile');
-    var fadElems = set[id].getElementsByClassName('fade');		
-    for (i = 0; i < fadElems.length; i++) {
-        fadElems[i].style.transform="translateY(0)";
-        fadElems[i].style.opacity=1;
-        await sleep(0);
-    }
+    let fadElems = document.querySelectorAll('.fade');
+    fadElems.forEach(elem => {
+        elem.style.animationName="fade-out";
+    });
 }
 
+function fadeMe(id){
+    resetFade();
+    var set = document.querySelectorAll('.profile');
+    var fadElems = set[id].querySelectorAll('.fade');
+    fadElems.forEach(elem => {
+        elem.style.animationName="fade-in";
+    });
+}
+
+var body=document.getElementsByTagName('body')[0].style; 
 function myFunction() {
     var scroll =((wrap.scrollTop) / (wrap.scrollHeight));
     let x = 1/16;
@@ -83,10 +66,11 @@ function myFunction() {
         fadeMe(7);
     }
 }
-var link = document.querySelectorAll('.pagelinks a');
-for (let i = 0; i < link.length; i++) {
-    link[i].addEventListener('click', function(){
+
+var link_list = document.querySelectorAll('.pagelinks a');
+link_list.forEach( link => {
+    link.addEventListener('click', function(){
         view = document.querySelector(this.id);
         view.scrollIntoView();
-    });
-  }
+    })
+});
