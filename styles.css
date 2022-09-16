@@ -43,7 +43,16 @@
     flex-direction:row;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    transform: translate(0, 2.5vh);
+    opacity: 0;
+    animation: slideup 1s forwards linear;
+ }
+ @keyframes slideup {
+    to{
+        opacity: 1;
+        transform: translate(0, 0);
+    }
  }
  .sidebar .pagelinks{
      width: 8vh;
@@ -245,7 +254,16 @@
      height:100%;
      width: 20vw;
      flex-direction: column;
+     transform: translate(2.5vw, 0);
+     opacity: 0;
+     animation: slideleft 1s forwards linear;
  }
+@keyframes slideleft {
+    to{
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
  .sidebar .pagelinks{
      width: 5vh;
      height: 5vh;
@@ -272,9 +290,6 @@
      font-size: 5.5vh;
      word-break:normal;
  }
- .profile .h1 span{
-    display: block;
-}
  .profile .h2{
      font-size: 5vh;
  }
