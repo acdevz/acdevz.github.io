@@ -60,7 +60,7 @@
      margin: 0px 2vw;
      transition: 0.7s;
  }
- .sidebar span{
+ .sidebar i{
      width: 100%;
      text-align: center;
      font-size: 8vh;
@@ -84,7 +84,7 @@
      transform: scale(1.5);
      transform-origin: 50% 50%;
  }
- #active span{
+ #active i{
      color:rgba(0,0,0,1);
  }
  .wrapper{
@@ -169,7 +169,7 @@
  .button div{
      display: none;
  }
- .button span{
+ .button i{
      font-size: 1em;
  }
  #back_icon_effect{
@@ -178,7 +178,7 @@
      bottom: -50vh;
      right: 5vw;
  }
- #back_icon_effect span{
+ #back_icon_effect i{
      font-size: 150vh;
      color:rgba(255,255,255,0.1);
      opacity: 0;
@@ -269,14 +269,14 @@
      height: 5vh;
      margin:2vh 0vh;
  }
- .sidebar span{
+ .sidebar i{
      font-size: 5vh;
  }
  #active {
      transform: scale(1.6);
      transform-origin: 50% 50%;
  }
- #active span{
+ #active i{
      color:rgba(0,0,0,1);
  }
  .wrapper{
@@ -313,7 +313,7 @@
      top:0vw;
      right:-50vw;
  }
- #back_icon_effect span{
+ #back_icon_effect i{
      font-size: 150vw;
  }
  .embeds{
